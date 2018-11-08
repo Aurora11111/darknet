@@ -22,6 +22,8 @@ https://github.com/pjreddie/darknet.git
 
 # datasets prepare #
 
+python dict_datasets.py
 
 
 # training #
+./darknet detector train cfg/voc.data cfg/text.cfg darknet53.conv.74
