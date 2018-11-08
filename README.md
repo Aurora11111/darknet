@@ -14,6 +14,14 @@ https://github.com/AlexeyAB/darknet
 # text-detection-yolov3 #
 this project is used to detect text 
 mainly reference:
+
 https://github.com/Aurora11111/keras_ocr
 https://github.com/tianzhi0549/CTPN
 https://github.com/pjreddie/darknet.git
+
+
+# datasets prepare #
+
+
+
+# training #
