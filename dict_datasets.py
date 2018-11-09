@@ -104,8 +104,9 @@ def dict_to_csv(path):
                 box = (xmin,ymin,xmin,ymax,xmax,ymax,xmax,ymin)
                 boxes.append(box)
                 cls_id = '1'
-                b = (int(xmin), int(ymin), int(xmax), int(ymax))
-                anchors_file.write(" " + ",".join([str(a) for a in b]) + "," + cls_id)
+                k = (int(xmin), int(ymin), int(xmax), int(ymax))
+                b = (int(xmin), int(xmax),int(ymin), int(ymax))
+                anchors_file.write(" " + ",".join([str(a) for a in k]) + "," + cls_id)
                 bb = convert((w, h), b)
                 out_file.write(str(cls_id) + " " + " ".join([str(a) for a in bb]) + '\n')
                 xmin += 16
