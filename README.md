@@ -21,9 +21,14 @@ https://github.com/pjreddie/darknet.git
 
 
 # datasets prepare #
-
+if your dataset format is json:
 python dict_datasets.py
+if your datasets is voc"
+python voc_annotation.py
 
+# generate anchors #
+python kmeans.py
+attentions:the accordibnate sequences must be:(xmin,xmax,ymin,ymax)
 
 # training #
 ./darknet detector train cfg/voc.data cfg/text.cfg darknet53.conv.74
