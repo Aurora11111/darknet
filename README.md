@@ -21,6 +21,7 @@ https://github.com/pjreddie/darknet.git
 
 
 # datasets prepare #
+first, you can down load icdar2017:链接:https://pan.baidu.com/s/1juvqEsJQ7rgAOlD9pfbd4g 密码:a3ag
 if your dataset format is json:
 
 python dict_datasets.py
