@@ -109,7 +109,7 @@ def convert_annotation(year, image_id,anchors_file):
         k = (xmin, ymin, xmax, ymax)
         b = (xmin, xmax, ymin, ymax)
         bb = convert((w,h), b)
-        out_file.write(str(cls_id) + " " + "".join([str(a) for a in bb]) + '\n')
+        out_file.write(str(cls_id) + " " + " ".join([str(a) for a in bb]) + '\n')
         anchors_file.write(" " + ",".join([str(a) for a in k])+ "," + cls_id )
 
     anchors_file.write('\n')
