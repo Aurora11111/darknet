@@ -33,7 +33,7 @@ python dict_datasets.py
 # generate anchors #
 python kmeans.py
 
-attentions:the accordibnate sequences must be:(xmin,xmax,ymin,ymax)
+attentions:the accordibnate sequences must be:(xmin, ymin, xmax, ymax)
 
 # training #
 ./darknet detector train cfg/voc.data cfg/text.cfg darknet53.conv.74
