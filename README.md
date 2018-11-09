@@ -8,6 +8,7 @@ For more information see the [Darknet project website](http://pjreddie.com/darkn
 For questions or issues please use the [Google Group](https://groups.google.com/forum/#!forum/darknet).
 
 some  using detaile can be found in below link:
+
 https://github.com/AlexeyAB/darknet
 
 
@@ -16,7 +17,9 @@ this project is used to detect text
 mainly reference:
 
 https://github.com/Aurora11111/keras_ocr
+
 https://github.com/tianzhi0549/CTPN
+
 https://github.com/pjreddie/darknet.git
 
 
