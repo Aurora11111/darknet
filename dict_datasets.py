@@ -64,6 +64,7 @@ def dict_to_csv(path):
     path = r"./results.txt"
     data = open(path)
     file = open('train.txt', 'w')
+    anchors_file = open('newanchors.txt', 'w')
     for line in data:
         #print(line)
         boxes = []
@@ -76,6 +77,7 @@ def dict_to_csv(path):
         print(image)
         w,h = (Image.open(image).convert('RGB')).size
         file.write('%s\n' % (image))
+        anchors_file.write(image)
         da = json.loads(mydata)["words_result"]
         #print(da)
         for location in da:
@@ -95,7 +97,6 @@ def dict_to_csv(path):
             xmin = left
             xmax = left + 16
 
-            tmp = xmin
             for i in range(int(width/16)):
                 #print(xmin, xmax)
                 value = (image,width,height,'text',xmin,ymin,xmax,ymax)
@@ -103,8 +104,8 @@ def dict_to_csv(path):
                 box = (xmin,ymin,xmin,ymax,xmax,ymax,xmax,ymin)
                 boxes.append(box)
                 cls_id = '1'
-                b = (xmin, xmax, ymin,ymax)
-
+                b = (int(xmin), int(ymin), int(xmax), int(ymax))
+                anchors_file.write(" " + ",".join([str(a) for a in b]) + "," + cls_id)
                 bb = convert((w, h), b)
                 out_file.write(str(cls_id) + " " + " ".join([str(a) for a in bb]) + '\n')
                 xmin += 16
@@ -131,17 +132,17 @@ def dict_to_csv(path):
         # x_left = np.delete(x_left, idx, axis=0)
         # x_right = np.delete(x_right, idx, axis=0)
 
-
+        anchors_file.write('\n')
         """
         draw rectangle on image
         """
-        im_name = image = '/home/rice/PycharmProjects/keras-yolo3-text/image/'+image[50:]
-        img = Image.open(im_name).convert("RGB")
-        img = np.array(img)
-        img2, scale = resize_im(img, scale=TextLineCfg.SCALE, max_scale=TextLineCfg.MAX_SCALE)
-        text_recs, img_drawed = draw_boxes(img, boxes, scale)
-        name = '/home/rice/PycharmProjects/keras-yolo3-text/test_result/' + image[50:]
-        Image.fromarray(img_drawed).save(name, 'JPEG')
+        # im_name = image = '/home/rice/PycharmProjects/keras-yolo3-text/image/'+image[50:]
+        # img = Image.open(im_name).convert("RGB")
+        # img = np.array(img)
+        # img2, scale = resize_im(img, scale=TextLineCfg.SCALE, max_scale=TextLineCfg.MAX_SCALE)
+        # text_recs, img_drawed = draw_boxes(img, boxes, scale)
+        # name = '/home/rice/PycharmProjects/keras-yolo3-text/test_result/' + image[50:]
+        # Image.fromarray(img_drawed).save(name, 'JPEG')
 
     column_name = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
     boxes_df = pd.DataFrame(boxes_list, columns=column_name)
