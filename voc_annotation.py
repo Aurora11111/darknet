@@ -100,16 +100,17 @@ def convert_annotation(year, image_id,anchors_file):
     for obj in root.iter('object'):
         xmlbox = obj.find('bndbox')
         xmin = int(xmlbox.find('xmin').text)
-        ymin = int(xmlbox.find('xmax').text)
-        xmax = int(xmlbox.find('ymin').text)
+        ymin = int(xmlbox.find('ymin').text)
+        xmax = int(xmlbox.find('xmax').text)
         ymax = int(xmlbox.find('ymax').text)
         box = (xmin, ymin, xmin, ymax, xmax, ymax, xmax, ymin)
         boxes.append(box)
         cls_id = '1'
-        b = (xmin, ymin, xmax, ymax)
+        k = (xmin, ymin, xmax, ymax)
+        b = (xmin, xmax, ymin, ymax)
         bb = convert((w,h), b)
         out_file.write(str(cls_id) + " " + "".join([str(a) for a in bb]) + '\n')
-        anchors_file.write(" " + ",".join([str(a) for a in b])+ "," + cls_id )
+        anchors_file.write(" " + ",".join([str(a) for a in k])+ "," + cls_id )
 
     anchors_file.write('\n')
     # im_name = image
@@ -128,7 +129,7 @@ for year, image_set in sets:
         os.makedirs('/home/rice/VOCdevkit/VOC%s/labels/'%(year))
     image_ids = open('/home/rice/VOCdevkit/VOC%s/ImageSets/Main/%s.txt'%(year, image_set)).read().strip().split()
     list_file = open('%s_%s.txt'%(year, image_set), 'w')
-    anchors_file = open('newanchors.txt', 'w')
+    anchors_file = open('newanchors1.txt', 'w')
     for image_id in image_ids:
         list_file.write('/home/rice/VOCdevkit/VOC2007/JPEGImages/%s.jpg\n'%(image_id))
         anchors_file.write('/home/rice/VOCdevkit/VOC2007/JPEGImages/%s.jpg' % (image_id))
