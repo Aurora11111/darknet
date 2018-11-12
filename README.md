@@ -32,11 +32,14 @@ if your dataset format is json:
 
 python dict_datasets.py
 
+attentions 1:the accordibnate sequences must be:(xmin, xmax,ymin, ymax)
 
 # generate anchors #
 python kmeans.py
 
-attentions:the accordibnate sequences must be:(xmin, ymin, xmax, ymax)
+attentions 1:the accordibnate sequences must be:(xmin, ymin, xmax, ymax)
+
+attentions 2:file structural must be similarity to voc
 
 # training #
 ./darknet detector train cfg/voc.data cfg/text.cfg darknet53.conv.74
